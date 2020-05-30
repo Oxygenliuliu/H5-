@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>群聊详情-微聊</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+	<link rel="stylesheet" href="css/swiper-3.4.1.min.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/weui.css" />
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/fontSize.js"></script>
+	<script src="js/swiper-3.4.1.min.js"></script>
+	<script src="js/wcPop/wcPop.js"></script>
+	<script src="js/weui.min.js"></script>
+	
+</head>
+<body>
+	
+	<!-- <>微聊主容器 -->
+	<div class="wechat__panel clearfix">
+		<div class="wc__qunliaoInfo-wrapper flexbox flex__direction-column">
+			<!-- //顶部 -->
+			<div class="wc__headerBar fixed">
+				<div class="inner flexbox">
+					<a class="back" href="javascript:;" onClick="history.back(-1);"></a>
+                    <h2 class="barTit flex1">聊天信息(3)</h2>
+				</div>
+            </div>
+            
+			<!-- //微聊消息上墙面板 -->
+			<div class="wc__qunliaoInfo-panel flex1">
+                <!-- 用户头像 -->
+				<div class="chat-cnt marBot">
+                    <div class="userImg">
+                        <ul class="userImg-list">
+                            <li class="userImg-cnt">
+                                <img src="img/uimg/u__chat-img02.jpg" alt="">
+                                <p>零度</p>
+                            </li>
+                            <li class="userImg-cnt">
+                                <img src="img/uimg/u__chat-img03.jpg" alt="">
+                                <p>贷款专员</p>
+                            </li>
+                            <li class="userImg-cnt">
+                                <img src="img/uimg/u__chat-img04.jpg" alt="">
+                                <p>路人甲</p>
+                            </li>
+                            <li class="userImg-cnt" id="J__addUser">
+                                <img src="img/wchat/icon__choose.png" alt="">
+                                <p></p>
+                            </li>
+                            <li class="userImg-cnt" id="J__subUser">
+                                <img src="img/wchat/icon__choose.png" alt="">
+                                <p></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chat-cnt marBot">
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                群聊名称
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p>感恩世界金花，五毛一分</p>
+                        </div>
+                    </div>
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                群二维码
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                            <img src="img/wallet/qrcode-img.png" alt="">
+                        </div>
+                    </div>
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                群公告
+                            </p>
+                            <p class="new">
+                                此群解散,重新换群,昨晚账单已赔付，需要战斗得兄弟，私聊联系我
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                群管理
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-cnt marBot">
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                查找聊天记录
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-cnt marBot">
+                    <div class="chatMsg-list">
+                        <!-- <i class="chatMsg-right"></i> -->
+                        <div class="checkbox-panel">
+                            <input class="switch switch-anim" οnchange="checkNum()" type="checkbox" checked />
+                        </div>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                消息免打扰
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="chatMsg-list">
+                        <!-- <i class="chatMsg-right"></i> -->
+                        <div class="checkbox-panel">
+                            <input class="switch switch-anim" οnchange="checkNum()" type="checkbox"/>
+                        </div>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                置顶聊天
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="chatMsg-list">
+                        <!-- <i class="chatMsg-right"></i> -->
+                        <div class="checkbox-panel">
+                            <input class="switch switch-anim" οnchange="checkNum()" type="checkbox"/>
+                        </div>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                保存到通讯录
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-cnt marBot">
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                我在本群的昵称
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p>零度</p>
+                        </div>
+                    </div>
+                    <div class="chatMsg-list">
+                        <!-- <i class="chatMsg-right"></i> -->
+                        <div class="checkbox-panel">
+                            <input class="switch switch-anim" οnchange="checkNum()" type="checkbox"/>
+                        </div>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                显示群成员昵称
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-cnt marBot">
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                设置当前聊天背景
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                投诉
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-cnt marBot">
+                    <div class="chatMsg-list">
+                        <i class="chatMsg-right"></i>
+                        <div class="chatMsg-l">
+                            <p class="title">
+                                清空聊天记录
+                            </p>
+                        </div>
+                        <div class="chatMsg-r">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>                
+
+                <div class="chat-cnt marBot">
+                    <div class="chatMsg-del">
+                        删除并退出
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		/** __公共函数 */
+		$(function(){
+			// 禁止长按弹出系统菜单
+			$(".wechat__panel").on("contextmenu", function(e){
+				e.preventDefault();
+			});
+		});
+		
+		/** __自定函数 */
+		$(function(){
+			// ...滚动聊天区底部
+			function wchat_ToBottom(){
+				$(".wc__chatMsg-panel").animate({scrollTop: $("#J__chatMsgList").height()}, 0);
+            }
+            
+            // switch 开关按钮
+            function checkNum() {
+                if ($('.switch-anim').prop('checked')) {
+                    console.log("选中");
+                } else {
+                    console.log("没选中");
+                }
+            }
+
+		});
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>新朋友-微聊</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+	<link rel="stylesheet" href="css/swiper-3.4.1.min.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/weui.css" />
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/fontSize.js"></script>
+	<script src="js/swiper-3.4.1.min.js"></script>
+	<script src="js/wcPop/wcPop.js"></script>
+	<script src="js/weui.min.js"></script>
+	
+</head>
+<body>
+	
+	<!-- <>微聊主容器 -->
+	<div class="wechat__panel clearfix">
+		<div class="wc__newFriend-wrapper flexbox flex__direction-column">
+			<!-- //顶部 -->
+			<div class="wc__headerBar fixed">
+				<div class="inner flexbox">
+					<a class="back" href="javascript:;" onClick="history.back(-1);"></a>
+                    <h2 class="barTit flex1">新的朋友</h2>
+            
+                    <a class="addText" href="javascript:;">添加朋友</a>
+				</div>
+            </div>
+            
+			<!-- //微聊消息上墙面板 -->
+			<div class="wc__newFriend-panel flex1">
+                <div class="newSecrah">
+                    <div class="secrah-cnt">
+                        <input type="text">
+                        <div class="label">
+                            <!-- <i class="newFriendIcon-secrah"></i> -->
+                            微信号/手机号
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chatMsg-addPhone">
+                    <i class="chatMsg-right"></i>
+                    <div class="chatMsg-l">
+                        <img src="img/uimg/u__chat-img01.jpg" alt="">
+                        <p class="title">
+                            添加手机联系人
+                        </p>
+                    </div>
+                    <div class="chatMsg-r">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="record-panel">
+                    <div class="record-label">
+                        近三天
+                    </div>
+                    <div class="record-cnt">
+                        <div class="record-list">
+                            <img src="img/uimg/u__chat-img01.jpg" alt="">
+                            <div class="recordList-cnt">
+                                <div class="recordList-l">
+                                    <p class="user">零度</p>
+                                    <p class="text">测试</p>
+                                </div>
+                                <div class="recordList-r add">
+                                    接受
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="record-panel">
+                    <div class="record-label">
+                        三天前
+                    </div>
+                    <div class="record-cnt">
+                        <div class="record-list">
+                            <img src="img/uimg/u__chat-img01.jpg" alt="">
+                            <div class="recordList-cnt">
+                                <div class="recordList-l">
+                                    <p class="user">沉默是金</p>
+                                    <p class="text">测试</p>
+                                </div>
+                                <div class="recordList-r">
+                                    已添加
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		/** __公共函数 */
+		$(function(){
+			// 禁止长按弹出系统菜单
+			$(".wechat__panel").on("contextmenu", function(e){
+				e.preventDefault();
+			});
+		});
+		
+		/** __自定函数 */
+		$(function(){
+			// ...滚动聊天区底部
+			function wchat_ToBottom(){
+				$(".wc__chatMsg-panel").animate({scrollTop: $("#J__chatMsgList").height()}, 0);
+			}
+
+		});
+	</script>
+	
+</body>
+</html>

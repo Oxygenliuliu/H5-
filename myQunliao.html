@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>群聊</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+	<link rel="stylesheet" href="css/swiper-3.4.1.min.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/fontSize.js"></script>
+	<script src="js/swiper-3.4.1.min.js"></script>
+	<script src="js/wcPop/wcPop.js"></script>
+	
+</head>
+<body>
+	
+	<!-- <>微聊主容器 -->
+	<div class="wechat__panel clearfix">
+		<div class="wc__myqunliao-wrapper flexbox flex__direction-column">
+			<!-- //顶部 -->
+			<div class="wc__headerBar fixed">
+				<div class="inner flexbox">
+                    <a class="back" href="javascript:;" onClick="history.back(-1);"></a>
+					<h2 class="barTit flex1">群聊</h2>
+				</div>
+            </div>
+
+            <div class="wc__myqunliao-panel">
+                <!-- 搜索 -->
+                <div class="newSecrah">
+                    <div class="secrah-cnt">
+                        <input type="text">
+                        <div class="label">
+                            <!-- <i class="newFriendIcon-secrah"></i> -->
+                            请输入群名称
+                        </div>
+                    </div>
+                </div>
+
+                <!-- //底部tabbar -->
+                <div class="myqunliao__tabBar">
+                    <ul class="flexbox flex-alignc wechat-pagination">
+                        <li class="flex1 on"><span>我创建的群</span></li>
+                        <li class="flex1"><span>我管理的群</span></li>
+                        <li class="flex1"><span>我加入的群</span></li>
+                    </ul>
+                </div>
+
+                <!-- //4个tabBar滑动切换 -->
+                <div class="wc__swiper-tabBar flex1">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <!-- //1、）微聊主页-->
+                            <div class="swiper-slide">
+                                <div class="wc__scrolling-panel">
+                                    我创建的群
+                                </div>
+                            </div>
+                            <!-- //2、通讯录-->
+                            <div class="swiper-slide">
+                                <div class="wc__scrolling-panel">
+                                    <div class="wc__addrFriend-list" id="J__addrFriendList">
+                                        我管理的群
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //3、探索-->
+                            <div class="swiper-slide">
+                                <div class="wc__scrolling-panel">
+                                    我加入的群
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+		</div>
+    </div>
+    
+    	<!-- 左右滑屏切换.Start -->
+	<script type="text/javascript"> 
+		var chatSwiper = new Swiper('.swiper-container',{
+			pagination: '.wechat-pagination',
+			paginationClickable: true,
+			paginationBulletRender: function (chatSwiper, index, className) {
+                console.log(chatSwiper, index, className)
+				switch (index) {
+					case 0:
+						name='<span>我创建的群</span>';
+						break;
+					case 1:
+						name='<span>我管理的群</span>';
+						break;
+					case 2:
+						name='<span>我加入的群</span>';
+						break;
+					default: name='';
+				}
+				return '<li class="flex1 ' + className + '">' + name + '</li>';
+			}
+		})
+	</script>
+	<!-- 左右滑屏切换 end -->
+	
+	<script type="text/javascript">
+		/** __公共函数 */
+		$(function(){
+			// 禁止长按弹出系统菜单
+			$(".wechat__panel").on("contextmenu", function(e){
+				e.preventDefault();
+			});
+		});
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>红包详情-微聊</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+	<link rel="stylesheet" href="css/swiper-3.4.1.min.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/weui.css" />
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/fontSize.js"></script>
+	<script src="js/swiper-3.4.1.min.js"></script>
+	<script src="js/wcPop/wcPop.js"></script>
+	<script src="js/weui.min.js"></script>
+	
+</head>
+<body>
+	
+	<!-- <>微聊主容器 -->
+	<div class="wechat__panel clearfix">
+		<div class="wc__redPacket-wrapper flexbox flex__direction-column">
+			<!-- //顶部 -->
+			<div class="wc__headerBar fixed">
+				<div class="inner flexbox">
+					<a class="back" href="javascript:;" onClick="history.back(-1);"></a>
+					<h2 class="barTit flex1">红包详情</h2>
+				</div>
+            </div>
+            
+			<!-- //微聊消息上墙面板 -->
+			<div class="wc__redPacketBody-panel flex1">
+				<div class="redPacketBody-head"> 
+					<div class="inner">
+                        <span>恭喜发财</span>
+                        <span>0.01</span>
+                    </div>
+                </div>
+                <div class="redPacketBody-cnt">
+                    <div class="userInfo">
+                        <img src="img/uimg/u__chat-img01.jpg" alt="">
+                        <p>技术客服的红包</p>
+                    </div>
+                    <div class="redPacketList-cnt">
+                        <p>
+                            已领取1/1个,共0.01/0.01元
+                        </p>
+                        <div class="redpacketMsg-cnt">
+                            <ul class="packetMsgList">
+                                <li class="info">
+                                    <img src="img/uimg/u__chat-img01.jpg" alt="">
+                                    <div class="info-cnt">
+                                        <div class="infoMsg">
+                                            <span class="user">技术客服</span>
+                                            <span class="date">2020-1-0 18:12:08</span>
+                                        </div>
+                                        <div class="price">
+                                            <p>0.01元</p>
+                                            <span class="hint">运气王</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		/** __公共函数 */
+		$(function(){
+			// 禁止长按弹出系统菜单
+			$(".wechat__panel").on("contextmenu", function(e){
+				e.preventDefault();
+			});
+		});
+		
+		/** __自定函数 */
+		$(function(){
+			// ...滚动聊天区底部
+			function wchat_ToBottom(){
+				$(".wc__chatMsg-panel").animate({scrollTop: $("#J__chatMsgList").height()}, 0);
+			}
+
+		});
+	</script>
+	
+</body>
+</html>
