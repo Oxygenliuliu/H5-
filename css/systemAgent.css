@@ -1,8 +1,93 @@
 .l_flex{display: flex;}
 .l_bottom-box{position: fixed;bottom: 0;background-color: #F7F7F7;width: 100%;height: 1rem;}
+.l_bottom-box::before{
+    content: '';
+    border-top: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5);
+}
 .l_flex-cneter{display: flex;justify-content: center;align-items: center;}
+.l_bottom-box .iconjianpan{font-size: .4rem;}
+.l_flex2{flex: 2;}
+.l_flex1{flex: 1;}
 .l_menu{background-color: #fff;}
-.l_box{background-color: #fff;}
-.l_menu::after{
-    content: '&#xe601;';
+.l_box{color: #000;}
+.l_box::before{
+    /* content: '\e934'; */
+    content: '';
+    position: absolute;
+    height: 60%;
+    width: 1px;
+    background-color: #DEDEDE;
+    top: 0.25rem;
+    left: .1rem;
+} 
+/*消息内容*/
+
+.l_a-text>.l_text-link{text-decoration: underline;}
+.l_a-text>.l_text-default{}
+
+.l_request-box{display: flex;justify-content: space-around;margin-top: 0.1rem;}
+.l_result,.l_refuse,.l_clicked{
+    line-height: .5rem;
+    border-radius: .4rem;
+    padding: 0 .3rem;
+    background-color: #DF1515;
+    color: #fff;
+}
+.l_refuse{
+    background-color: #999;
+}
+.l_btn-koyboard{margin-left: 0;height: .67rem;width: .67rem;}
+.l_btn-text{text-align: center;}
+.l_clicked{display: none; background-color: #999;margin-top: .1rem;}
+/*菜单选项弹出*/
+.l_icon-box{
+    font-size: 12px;
+    position: absolute;
+    left: .3rem;
+    top: .3rem;
+    transform: scale(0.7);
+}
+.weui-flex__item{position: relative;}
+.l_menu-list{
+    height: 0;
+    overflow: hidden;
+    transition: height .2s ease-in;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2rem;
+    padding:0 .2rem;
+    margin-bottom: 1.2rem;
+    background-color: #fff;
+    border-top-left-radius: .1rem;
+    border-top-right-radius: .1rem;
+}
+.l_menu-list::after{
+    font-family: iconfont;
+    content: '\e600';
+    font-size: .6rem;
+    position: absolute;
+    bottom: -.52rem;
+    color: #F7F7F7;
+    left: .9rem;
+    transform: rotate(180deg);
+}
+.l_menu-list .l_menu-li div{
+    line-height: .6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #EFEFEF;
+}
+.l_menu-list .l_menu-li div:last-child{
+    border-bottom: none;
 }

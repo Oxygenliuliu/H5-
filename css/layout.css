@@ -183,6 +183,7 @@
 .wc__editor-panel .wrap-editor .editor .face{vertical-align: middle; height: .4rem;}
 .wc__editor-panel .btn{margin-left: .15rem; height: .7rem; width: .7rem;}
 .wc__editor-panel .btn-voice{background: url(../img/wchat/icon__voice.png) no-repeat; background-size: cover;}
+.btn-keyboard{background: url(../img/wchat/icon__keyboard.png) no-repeat; background-size: cover;}
 .wc__editor-panel .btn-emotion{background: url(../img/wchat/icon__emotion.png) no-repeat; background-size: cover;}
 .wc__editor-panel .btn-choose{background: url(../img/wchat/icon__choose.png) no-repeat; background-size: cover;}
 .wc__editor-panel .btn-submit{background: #ffd100; border: 0; border-radius: .05rem; color: #fff; font-size: .28rem; font-family: "Microsoft Yahei"; outline: none; margin-left: .2rem; margin-bottom: .04rem; padding: 0 .15rem; height: .6rem;}

@@ -35,22 +35,321 @@
 					<a class="barIco u-one" href="javascript:;"></a>
 				</div>
 			</div>
+			<!-- 系统消息 -->
+			<div class="wc__chatMsg-panel flex1">
+				<div class="chatMsg-cnt">
+					<ul class="clearfix" id="J__chatMsgList">
+						<!-- <li class="notice"><span>你已经添加了张小龙，现在可以开始聊天了。</span></li> -->
+						<!-- <li class="time"><span>2017年12月31日 晚上22:30</span></li> -->
+						<!-- 别人-->
+						<li class="others">
+							<a class="avatar" href="javascript:void(0);"><img src="img/uimg/u__chat-img04.jpg" /></a>
+							<div class="content">
+								<div class="msg l_a-text">
+									<a class="l_text-link" href="javascript:void(0);">www.baidu.com</a><span class="l_text-default">点击链接跳转</span>	
+								</div>
+							</div>
+						</li>
+						<li class="time"><span>2月25日 早上09:48</span></li>
+						<li class="others">
+							<a class="avatar" href="javascript:void(0);"><img src="img/uimg/u__chat-img04.jpg" /></a>
+							<div class="content">
+								<div class="msg l_a-text l_btn-text">
+									<div class="l_add-request">李小龙(个人)请求添加您为好友</div>
+									<div class="l_request-box">
+										<div class="l_result l_btn">同意</div>
+										<div class="l_refuse l_btn">拒绝</div>
+									</div>
+									<div class="l_clicked">已同意</div>
+								</div>
+							</div>
+						</li>
+						<li class="others">
+							<a class="avatar" href="javascript:void(0);"><img src="img/uimg/u__chat-img04.jpg" /></a>
+							<div class="content">
+								<div class="msg l_a-text l_btn-text">
+									<div class="l_add-request">李小龙(群)请求添加您为好友</div>
+									<div class="l_request-box">
+										<div class="l_result l_btn">同意</div>
+										<div class="l_refuse l_btn">拒绝</div>
+									</div>
+									<div class="l_clicked">已同意</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 点击同意或拒绝 -->
+			<script>
+				$('.l_btn-text .l_btn').click(function(){
+					let textValue = '已'+$(this).text();
+					$(this).parent('.l_request-box').css({'display':'none'})
+					$(this).parent().next().text(textValue);
+					$(this).parent().next().css({'display':'inline-block'})
+				})
+			</script>
+			<!-- 底部菜单 -->
+			<!-- //微聊底部功能面板 -->
+			<div class="wc__footTool-panel" style="display: block;" id='l_bottom1'>
+				<!--  -->
+
+				<!-- 输入框模块 -->
+				<div class="wc__editor-panel wc__borT flexbox">
+					<i class="l_btn-koyboard btn-keyboard"></i>
+					<i class="btn btn-voice"></i>
+					<div class="wrap-editor flex1 wrap-show"><div class="editor J__wcEditor" contenteditable="true" style="-webkit-user-select:auto;"></div></div>
+					<div class="wrap-voice flex1 ">点击录音</div>
+					<style>
+						.wrap-voice.flex1{
+							text-align: center;
+							height: 35px;
+							line-height: 35px;
+							border-bottom: 1px solid #e3e3e3;
+							font-weight: 400;
+							font-size: .3rem;
+							color: #333;
+						}
+						.wc__editor-panel .flex1.wrap-show{display: block;}
+						.wc__editor-panel .flex1{display: none;}
+					</style>
+					<script>
+						/*修改*/
+						$(".btn-voice").on("click",function () {
+							$(".flex1").toggleClass("wrap-show")
+						})
+					</script>
+					<button class="btn-submit J__wchatSubmit">发送</button>
+				</div>
+				<!-- 按住录音 -->
+				<div class="recording__voice" style="background-image: url('./img/wchat/icon__record.png')">
+					<p class="blackBoxPauseContent">手指上划，取消发送</p>
+					<style>
+						.recording__voice {
+							width: 176px;
+							height: 176px;
+							position: fixed;
+							left: 0;
+							right: 0;
+							top: 0;
+							bottom: 0;
+							margin: auto;
+							z-index: 99;
+							border-radius: 12px;
+							background:  56px 16px / 64px 104px no-repeat rgba(0, 0, 0, 0.7);;
+							display: none;
+						}
+						.blackBoxPauseContent {
+							font: 14.4px '微软雅黑 Light';
+							position: absolute;
+							left: 0;
+							right: 0;
+							bottom: 12px;
+							display: block;
+							text-align: center;
+							width: 90%;
+							padding: 8px 0;
+							margin: auto;
+							color: #ffffff;
+							font-weight: 200;
+							border-radius: 4px;
+						}
+					</style>
+					<script>
+						// 发送语音
+						(function(){
+							//录音按钮
+							var bt_recoding = document.querySelector(".wrap-voice");
+
+							//手指移动相关
+							var posStart = 0;//初始化起点坐标
+							var posEnd = 0;//初始化终点坐标
+							var posMove = 0;//初始化滑动坐标
+
+							bt_recoding.addEventListener("touchstart", function (event) {
+								event.preventDefault();//阻止浏览器默认行为
+								posStart = 0;
+								posStart = event.touches[0].pageY;//获取起点坐标
+
+								//显示录音
+								$(".recording__voice").css("display", 'block');
+							});
+
+							bt_recoding.addEventListener("touchmove", function (event) {
+								event.preventDefault();//阻止浏览器默认行为
+
+								posMove = event.targetTouches[0].pageY;//获取滑动实时坐标
+								if (posStart - posMove < 200) {
+									//显示暂停
+									$(".recording__voice").css("background-image", "url('./img/wchat/icon__record.png')");
+									$(".blackBoxPauseContent").css('background','')
+								} else {
+									//隐藏暂停
+									$(".recording__voice").css("background-image", "url('./img/wchat/icon__cancel.png')");
+									$(".blackBoxPauseContent").css('background','red')
+								}
+							});
+
+							bt_recoding.addEventListener("touchend", function (event) {
+								event.preventDefault(); //阻止浏览器默认行为
+								posEnd = 0;
+								posEnd = event.changedTouches[0].pageY;//获取终点坐标
+
+
+								if (posStart - posEnd < 200) {
+									console.log("发送成功");
+									$(".recording__voice").css("display", 'none');
+								} else {
+									console.log("取消发送");
+									$(".recording__voice").css("display", 'none');
+								}
+							});
+
+						}())
+
+
+
+
+					</script>
+				</div>
+
+				<!-- 表情、选择模块 -->
+				<div class="wc__choose-panel wc__borT" style="display: none;">
+					<!-- 表情区域 -->
+					<div class="wrap-emotion" style="display: none;">
+						<div class="emotion__cells flexbox flex__direction-column">
+							<div class="emotion__cells-swiper flex1" id="J__swiperEmotion">
+								<div class="swiper-container">
+									<div class="swiper-wrapper"></div>
+									<div class="pagination-emotion"></div>
+								</div>
+							</div>
+							<div class="emotion__cells-footer" id="J__emotionFootTab">
+								<ul class="clearfix">
+									<li class="swiperTmpl cur" tmpl="swiper__tmpl-emotion01"><img src="img/emotion/face01/face-lbl.png" alt=""></li>
+									<li class="swiperTmpl" tmpl="swiper__tmpl-emotion02"><img src="img/emotion/face02/face-lbl.gif" alt=""></li>
+									<li class="swiperTmpl" tmpl="swiper__tmpl-emotion03"><img src="img/emotion/face03/face-lbl.gif" alt=""></li>
+									<li class="swiperTmpl" tmpl="swiper__tmpl-emotion04"><img src="img/emotion/face04/face-lbl.gif" alt=""></li>
+									<li class="swiperTmpl" tmpl="swiper__tmpl-emotion05"><img src="img/emotion/face05/face-lbl.gif" alt=""></li>
+									<li class="swiperTmpl" tmpl="swiper__tmpl-emotion06"><img src="img/emotion/face06/face-lbl.gif" alt=""></li>
+									<li class="swiperTmplSet"><img src="img/wchat/icon__emotion-set.png" alt=""></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- 选择区域 -->
+					<div class="wrap-choose" style="display: none;">
+						<div class="choose__cells">
+							<ul class="clearfix">
+								<li><a class="J__wchatZp" href="javascript:;"><span class="img"><img src="img/wchat/icon__choose-zp.png" /><input type="file" onchange="uploadImg(this)" accept="image/*" /></span><em>照片</em></a></li>
+								<li><a class="J__wchatSp" href="javascript:;"><span class="img"><img src="img/wchat/icon__choose-sp.png" /><input type="file" accept="video/*" /></span><em>视频</em></a></li>
+								<li><a class="J__wchatHb" href="javascript:;"><span class="img"><img src="img/wchat/icon__choose-hb.png" /></span><em>红包</em></a></li>
+								<li><a class="J__wchatSc" href="javascript:;"><span class="img"><img src="img/wchat/icon__choose-sc.png" /></span><em>我的收藏</em></a></li>
+								<li><a class="J__wchatWj" href="javascript:;"><span class="img"><img src="img/wchat/icon__choose-wj.png" /></span><em>文件</em></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wc__footTool-panel l_bottom-box weui-flex" id='l_bottom2' style="display: none;">
+				<div class="weui-flex__item l_flex1 l_flex-cneter">
+					<i class="l_btn-koyboard btn-keyboard"></i>
+				</div>
+				<div class="weui-flex__item l_flex2 l_flex-cneter">
+					<div class="l_menu-list l_tag">
+						<li class="l_menu-li">
+							<div>选项1</div>
+							<div>选项2</div>
+							<div>选项3</div>
+						</li>
+					</div>
+					<div class="iconfont l_box" id='l_bottomBtn1'>0元领课
+						
+					</div> 
+				</div>
+				<div class="weui-flex__item l_flex2 l_flex-cneter">
+					<div class="l_menu-list l_tag">
+						<li class="l_menu-li">
+							<div>福利1</div>
+						</li>
+					</div>
+					<div class="iconfont l_box" id='l_bottomBtn2'>领福利
+						<div class="l_icon-box">
+							<span class="iconfont iconsanheng"></span>
+						</div>
+					</div> 
+				</div>
+				<div class="weui-flex__item l_flex2 l_flex-cneter">
+					<div class="l_menu-list l_tag">
+						<li class="l_menu-li">
+							<div>课程1</div>
+							<div>课程2</div>
+							<div>课程3</div>
+							<div>课程4</div>
+						</li>
+					</div>
+					<div class="iconfont l_box" id='l_bottomBtn3'>课程服务
+						
+					</div> 
+				</div>
+			</div>
         </div>
-    </div>
-    <!-- 底部菜单 -->
-    <div class="l_bottom-box weui-flex">
-        <div class="weui-flex__item l_menu l_flex-cneter">
-            <div>菜单</div> 
-        </div>
-        <div class="weui-flex__item l_box l_flex-cneter">
-            <div>菜单一</div> 
-        </div>
-        <div class="weui-flex__item l_box l_flex-cneter">
-            <div>菜单二</div> 
-        </div>
-        <div class="weui-flex__item l_box l_flex-cneter">
-            <div>菜单三</div> 
-        </div>
-    </div>
+	</div>
+	
+	
+
+    
+	<!--  -->
+	<script>
+		$('.l_bottom-box .l_flex2').click(function(){
+			let _self = this;
+			$('.l_bottom-box .l_flex2').each(function(){
+				if(_self == this){
+					if($(this).find('.l_tag').css('height') == '0px'){
+						let eleLength =$(this).find('.l_tag .l_menu-li  div').length;
+						$(this).find('.l_tag').css({'height': eleLength * 0.6 + 'rem'})
+					}else{
+						$(this).find('.l_tag').css({'height':'0'})
+				}
+				}else{
+					$(this).find('.l_tag').css({'height':'0'})
+				}
+			})
+			
+		})
+		$('.l_btn-koyboard').click(function(){
+			if($('#l_bottom1').css('display') == 'none'){
+				$('#l_bottom1').css({'display':'block'})
+				$('#l_bottom2').css({'display':'none'})
+			}else{
+				$('#l_bottom1').css({'display':'none'})
+				$('#l_bottom2').css({'display':'flex'})
+			}
+		})
+		// $('#l_bottomBtn1').on('click',()=>{
+		// 	if($('.l_tag1').css('height') == '0px'){
+		// 		let eleLength = $('.l_tag1 > .l_menu-li > div').length;
+		// 		$('.l_tag1').css({'height': eleLength * 0.6 + 'rem'})
+		// 	}else{
+		// 		$('.l_tag1').css({'height':'0'})
+		// 	}
+		// })
+		// $('#l_bottomBtn2').on('click',()=>{
+		// 	if($('.l_tag2').css('height') == '0px'){
+		// 		let eleLength = $('.l_tag2 > .l_menu-li > div').length;
+		// 		$('.l_tag2').css({'height': eleLength * 0.6 + 'rem'})
+		// 	}else{
+		// 		$('.l_tag2').css({'height':'0'})
+		// 	}
+		// })
+		// $('#l_bottomBtn3').on('click',()=>{
+		// 	if($('.l_tag3').css('height') == '0px'){
+		// 		let eleLength = $('.l_tag3 > .l_menu-li > div').length;
+		// 		$('.l_tag3').css({'height': eleLength * 0.6 + 'rem'})
+		// 	}else{
+		// 		$('.l_tag3').css({'height':'0'})
+		// 	}
+		// })
+	</script>
 </body>
 </html>
